@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai Kiem Tra Lan 2 MindX</title>
+</head>
+<body>
+    <div>Câu 1: </div>
+    <div>
+        <input id="id-1-1" placeholder="Nhập n: " type="text">
+        <input id="id-1-2" placeholder="Nhập inputNumber: " type="text">
+        <button id="btn1">Tính kết quả</button>
+        <div>Kết quả là: <div id="result-1"></div></div>
+    </div>
+    <br>
+    <div>Câu 2: </div>
+    <div>
+        <input id="id-2-1" placeholder="Nhập chuỗi thứ nhất: " type="text">
+        <input id="id-2-2" placeholder="Nhập chuỗi thứ hai: " type="text">
+        <button id="btn2">Tính kết quả</button>
+        <div>Kết quả là: <div id="result-2"></div></div>
+    </div>
+</body>
+<script>
+    document.getElementById("btn2").onclick= ()=> {
+        document.getElementById("result-2").innerHTML= merge2String(document.getElementById("id-2-1").value, document.getElementById("id-2-2").value)
+    }
+    document.getElementById("btn1").onclick= ()=> {
+        document.getElementById("result-1").innerHTML= findOppositeNumber(document.getElementById("id-1-1").value, document.getElementById("id-1-2").value)
+    }
+    function findOppositeNumber(n, inputNumber) {
+    if(parseInt(inputNumber) +( parseInt(n) / 2 )> parseInt(n)) {
+        return parseInt(inputNumber) +( parseInt(n) / 2) - parseInt(n)
+    } 
+    else {
+        return parseInt(inputNumber) + (parseInt(n) / 2)
+    }
+}
+
+function merge2String(str1, str2) {
+    let result= []
+    if(str1.length < str2.length) {
+        let a= str2.slice(str1.length)
+        let a1= str2.slice(0, str1.length) // new string
+        str1.split("").map((item, key)=> {
+            return result.push(str1[key], a1[key])
+        })
+        result.push(a)
+        return result.join("")
+    }
+    else { // str1 > str2
+        let a= str1.slice(str2.length) // redudant
+        let a1= str1.slice(0, str2.length) // new string
+        str2.split("").map((item, key)=> {
+            return result.push(a1[key], str2[key])
+        })
+        result.push(a)
+        return result.join("")
+    }
+    
+}
+</script>
+</html>
